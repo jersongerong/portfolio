@@ -1,0 +1,77 @@
+@page "/experience"
+
+<div class="container py-3">
+    <h2 class="border-bottom pb-2 mb-4">Professional Experience</h2>
+
+    <div class="timeline position-relative ps-4 border-start border-2 border-secondary">
+        @foreach (var job in WorkHistory)
+        {
+            <div class="mb-5 position-relative">
+                <div class="position-absolute bg-primary rounded-circle" style="width: 12px; height: 12px; left: -31px; top: 6px;"></div>
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <h4 class="mb-0 fw-bold text-dark">@job.Role</h4>
+                    <span class="badge bg-secondary px-3 py-2 rounded-pill">@job.Duration</span>
+                </div>
+                <h5 class="text-primary mb-2">@job.Company</h5>
+                <ul class="text-muted ps-3">
+                    @foreach (var bullet in job.Highlights)
+                    {
+                        <li class="mb-1">@bullet</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    public class JobRecord
+    {
+        public string Role { get; set; } = string.Empty;
+        public string Company { get; set; } = string.Empty;
+        public string Duration { get; set; } = string.Empty;
+        public List<string> Highlights { get; set; } = new();
+    }
+
+    private List<JobRecord> WorkHistory = new()
+    {
+        new JobRecord {
+            Role = "Business Architecture Analyst[cite: 1]",
+            Company = "Accenture Philippines[cite: 1]",
+            Duration = "Jan 2026 - Present[cite: 1]",
+            Highlights = new() {
+                "Perform tasks independently and develop into a Subject Matter Expert (SME) within the domain[cite: 1].",
+                "Collaborate with cross-functional teams to gather business requirements and translate them into technical specifications[cite: 1].",
+                "Conduct comprehensive testing and debugging of system components to ensure quality[cite: 1]."
+            }
+        },
+        new JobRecord {
+            Role = "Systems Support Analyst[cite: 1]",
+            Company = "PASAR Corporation[cite: 1]",
+            Duration = "Jun 2022 - Nov 2025[cite: 1]",
+            Highlights = new() {
+                "Served as MM SME (Inventory Control & Warehouse) and Security/GRC Lead (ARA, ARM) during an Oracle R12 to SAP S/4HANA migration[cite: 1].",
+                "Managed UAT testing, documentation, and L2 functional support via ServiceNow[cite: 1].",
+                "Maintained master data via Winshuttle and built customized Power BI reporting dashboards[cite: 1]."
+            }
+        },
+        new JobRecord {
+            Role = "Application Development Analyst[cite: 1]",
+            Company = "Accenture[cite: 1]",
+            Duration = "Jul 2021 - Jun 2022[cite: 1]",
+            Highlights = new() {
+                "Developed enterprise web applications using Sitecore CMS and ASP.NET MVC[cite: 1].",
+                "Supported client applications within the global utilities sector (gas and energy)[cite: 1]."
+            }
+        },
+        new JobRecord {
+            Role = "Application Developer[cite: 1]",
+            Company = "PASAR Corporation[cite: 1]",
+            Duration = "May 2018 - Jul 2021[cite: 1]",
+            Highlights = new() {
+                "Designed and maintained custom web and mobile apps for operational log sheets using Agile methodologies[cite: 1].",
+                "Transformed physical paper-based plant operational sheets into digital applications for the copper mining industry[cite: 1]."
+            }
+        }
+    };
+}

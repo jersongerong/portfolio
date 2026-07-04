@@ -1,0 +1,50 @@
+@page "/about"
+
+<div class="container py-3">
+    <h2 class="border-bottom pb-2 mb-4">Profile & Background</h2>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card bg-dark text-white shadow-sm p-3">
+                <h4 class="text-primary mb-3">Contact Details</h4>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill text-danger me-2"></i> Tolingon, Isabel, Leyte[cite: 1]</li>
+                    <li class="mb-2"><i class="bi bi-telephone-fill text-success me-2"></i> +639062037930[cite: 1]</li>
+                    <li class="mb-2"><i class="bi bi-translate text-info me-2"></i> English, Cebuano, Tagalog[cite: 1]</li>
+                </ul>
+            </div>
+
+            <div class="card mt-4 shadow-sm p-3 border-0 bg-light">
+                <h5 class="fw-bold text-secondary">Education</h5>
+                <p class="mb-0 fw-semibold">Visayas State University</p>
+                <small class="text-muted">2008 - 2013[cite: 1]</small>
+                <p class="text-dark mb-0">B.S. in Information Technology[cite: 1]</p>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <h4 class="fw-bold mb-3 text-secondary">Certifications & Training</h4>
+            <div class="list-group shadow-sm">
+                @foreach (var cert in Certifications)
+                {
+                    <div class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="bi bi-patch-check-fill text-primary me-3 fs-5"></i>
+                        <span>@cert</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<string> Certifications = new()
+    {
+        "Putting AI Ethics into Practice at SAP[cite: 1]",
+        "Discovering High-Value Opportunities for Agentic AI[cite: 1]",
+        "Managing Clean Core for SAP S/4HANA Cloud[cite: 1]",
+        "Boosting AI-driven Business Transformation with Joule Agents[cite: 1]",
+        "Introducing SAP Business AI for SAP Customer Experience[cite: 1]",
+        "LSS Green Belt - Certification of Completion[cite: 1]"
+    };
+}

@@ -1,0 +1,35 @@
+@page "/skills"
+
+<div class="container py-3">
+    <h2 class="border-bottom pb-2 mb-4">Skills Matrix</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var category in SkillCategories)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-header bg-primary text-white fw-bold">
+                        @category.Key
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var skill in category.Value)
+                        {
+                            <li class="list-group-item bg-transparent">
+                                <i class="bi bi-check2-circle text-success me-2"></i> @skill
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private Dictionary<string, List<string>> SkillCategories = new()
+    {
+        { "SAP & GRC Expertise", new() { "SAP GRC Access Control & Security[cite: 1]", "SAP MM Functional Support[cite: 1]", "SAP Security and GRC (ARA, ARM) Lead[cite: 1]", "Material Master Data Management[cite: 1]" } },
+        { "Data & Tooling", new() { "BI Reporting (PowerBI, SSRS)[cite: 1]", "Winshuttle Functional Support[cite: 1]", "Oracle R12 to SAP S/4HANA Migration[cite: 1]" } },
+        { "Software Development", new() { "Application Development (.NET, Sitecore CMS)[cite: 1]", "C# and ASP.NET MVC Systems Architecture[cite: 1]", "Agile Methodologies[cite: 1]" } }
+    };
+}

@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ] # Triggers whenever you push to main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x' # Match your current local .NET SDK version
+
+    - name: Publish Blazor WebAssembly
+      run: dotnet publish -c Release -o release
+
+    - name: Commit build files to GitHub Pages branch
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: release/wwwroot # Deploys only the static built web assets
+        branch: gh-pages # Pushes compilation to an isolated target branch
