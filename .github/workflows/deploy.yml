@@ -20,7 +20,7 @@ jobs:
         dotnet-version: '8.0.x' # Match your current local .NET SDK version
 
     - name: Publish Blazor WebAssembly
-      run: dotnet publish -c Release -o release
+      run: dotnet publish -c Release -o release --p:BlazorWebAssemblyBaseHref=/portfolio/
 
     - name: Commit build files to GitHub Pages branch
       uses: JamesIves/github-pages-deploy-action@v4
